@@ -20,11 +20,12 @@ jobs:
               docker run -d --name centossvc -p 8081:8081 blackducksoftware/hub-imageinspector-ws-centos:2.2.0-SNAPSHOT
               docker run -d --name ubuntusvc -p 8082:8082 blackducksoftware/hub-imageinspector-ws-ubuntu:2.2.0-SNAPSHOT
               sleep 30
-              docker logs alpinesvc
-              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
+              docker logs ubuntusvc
+              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
+              docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
+
               docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
               docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
-              docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
       #- run:
           #name: Run Detect
           #command: bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled --blackduck.hub.offline.mode=true --blackduck.hub.url=https://prd-int-hub01.dc2.lan --blackduck.hub.username=sysadmin --blackduck.hub.password=blackduck
