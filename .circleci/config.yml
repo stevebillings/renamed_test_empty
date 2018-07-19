@@ -13,4 +13,4 @@ jobs:
           command: date
       - run:
           name: Run Detect
-          command: apt-get -y update && apt-get -y install curl; bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.tar=hello.tar --detect.hub.signature.scanner.disabled --blackduck.hub.offline.mode=true --blackduck.hub.url=https://prd-int-hub01.dc2.lan --blackduck.hub.username=sysadmin --blackduck.hub.password=blackduck
+          command: apt-get -y update && apt-get -y install curl; bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.tar=alpine.tar --detect.hub.signature.scanner.disabled --blackduck.hub.offline.mode=true --blackduck.hub.url=https://prd-int-hub01.dc2.lan --blackduck.hub.username=sysadmin --blackduck.hub.password=blackduck
