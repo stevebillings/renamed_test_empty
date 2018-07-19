@@ -11,3 +11,6 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+      - run:
+          name: Run Detect
+          command: bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh --detect.docker.image=alpine:latest
