@@ -19,10 +19,17 @@ jobs:
               sleep 30
               docker logs ubuntusvc
               docker ps
+
               echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
               docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
 
+              echo EXECUTING curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
+              curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
+
+              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
               docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
+
+              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
               docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
       #- run:
           #name: Run Detect
