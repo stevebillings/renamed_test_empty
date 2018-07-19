@@ -1,8 +1,7 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/openjdk:8-jdk-node-browsers
+    machine: true
     steps:
       - checkout
       - setup_remote_docker:
@@ -21,6 +20,7 @@ jobs:
               docker run -d --name ubuntusvc -p 8082:8082 blackducksoftware/hub-imageinspector-ws-ubuntu:2.2.0-SNAPSHOT
               sleep 30
               docker logs ubuntusvc
+              docker ps
               echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
               docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
 
