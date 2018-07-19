@@ -13,4 +13,4 @@ jobs:
           command: date
       - run:
           name: Run Detect
-          command: bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest
+          command: apk update && apk add curl; bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest
