@@ -1,7 +1,8 @@
 version: 2
 jobs:
   build:
-    machine: true
+    docker:
+      - image: circleci/openjdk:8-jdk-node-browsers
     steps:
       - checkout
       - setup_remote_docker:
