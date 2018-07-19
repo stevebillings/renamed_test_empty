@@ -13,4 +13,4 @@ jobs:
           command: date
       - run:
           name: Run Detect
-          command: apt-get -y update && apt-get -y install curl default-jre; bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest
+          command: apt-get -y update && apt-get -y install curl default-jre; bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled --blackduck.hub.offline.mode=true
