@@ -20,17 +20,17 @@ jobs:
               docker logs ubuntusvc
               docker ps
 
-              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
-              docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
+              #echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
+              #docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
 
               echo EXECUTING curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
               curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
 
-              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
-              docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
+              echo EXECUTING curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
+              curl -i --retry 10 --retry-delay 15 http://localhost:8080/health
 
-              echo EXECUTING docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
-              docker exec ubuntusvc curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
+              echo EXECUTING curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
+              curl -i --retry 10 --retry-delay 15 http://localhost:8081/health
       #- run:
           #name: Run Detect
           #command: bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled --blackduck.hub.offline.mode=true --blackduck.hub.url=https://prd-int-hub01.dc2.lan --blackduck.hub.username=sysadmin --blackduck.hub.password=blackduck
