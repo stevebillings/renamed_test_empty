@@ -36,7 +36,7 @@ jobs:
           command: |
               export DETECT_DOCKER_PASSTHROUGH_DOCKER_INSPECTOR_VERSION=6.0.5-SNAPSHOT
               env
-              bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.url=http://localhost:8082
+              bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.url=http://localhost:8082 --logging.level.com.blackducksoftware.integration=DEBUG
       - run:
           name: Build failed
           when: on_fail
