@@ -13,6 +13,9 @@ jobs:
       - run:
           name: Service health check
           command: |
+              pwd
+              ls -ld .
+              mkdir shared
               docker run -d --name alpinesvc -p 8080:8080 blackducksoftware/hub-imageinspector-ws-alpine:2.2.0-SNAPSHOT
               docker run -d --name centossvc -p 8081:8081 blackducksoftware/hub-imageinspector-ws-centos:2.2.0-SNAPSHOT
               docker run -d --name ubuntusvc -p 8082:8082 blackducksoftware/hub-imageinspector-ws-ubuntu:2.2.0-SNAPSHOT
