@@ -31,6 +31,9 @@ jobs:
 
               echo ""; echo EXECUTING curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
               curl -i --retry 10 --retry-delay 15 http://localhost:8082/health
-      #- run:
-          #name: Run Detect
-          #command: bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled --blackduck.hub.offline.mode=true --blackduck.hub.url=https://prd-int-hub01.dc2.lan --blackduck.hub.username=sysadmin --blackduck.hub.password=blackduck
+      - run:
+          name: Run Detect
+          command: |
+              export DETECT_DOCKER_PASSTHROUGH_DOCKER_INSPECTOR_VERSION=6.0.5-SNAPSHOT
+              env
+              bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.url=http://localhost:8082
