@@ -16,9 +16,9 @@ jobs:
               pwd
               ls -ld .
               mkdir shared
-              docker run -d --name alpinesvc -p 8080:8080 blackducksoftware/hub-imageinspector-ws-alpine:2.2.0-SNAPSHOT
-              docker run -d --name centossvc -p 8081:8081 blackducksoftware/hub-imageinspector-ws-centos:2.2.0-SNAPSHOT
-              docker run -d --name ubuntusvc -p 8082:8082 blackducksoftware/hub-imageinspector-ws-ubuntu:2.2.0-SNAPSHOT
+              docker run -d --name alpinesvc -p 8080:8080 --volume=./shared:/opt/blackduck/hub-imageinspector-ws/shared blackducksoftware/hub-imageinspector-ws-alpine:2.2.0-SNAPSHOT
+              docker run -d --name centossvc -p 8081:8081 --volume=./shared:/opt/blackduck/hub-imageinspector-ws/shared blackducksoftware/hub-imageinspector-ws-centos:2.2.0-SNAPSHOT
+              docker run -d --name ubuntusvc -p 8082:8082 --volume=./shared:/opt/blackduck/hub-imageinspector-ws/shared blackducksoftware/hub-imageinspector-ws-ubuntu:2.2.0-SNAPSHOT
               sleep 30
               docker logs ubuntusvc
               docker ps
@@ -39,7 +39,7 @@ jobs:
           command: |
               export DETECT_DOCKER_PASSTHROUGH_DOCKER_INSPECTOR_VERSION=6.0.5-SNAPSHOT
               env
-              bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.url=http://localhost:8082 --logging.level.com.blackducksoftware.integration=DEBUG
+              bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.url=http://localhost:8082 --logging.level.com.blackducksoftware.integration=DEBUG --detect.docker.passthrough.shared.dir.path.local=./shared
       - run:
           name: Build failed
           when: on_fail
