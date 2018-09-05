@@ -7,5 +7,4 @@ jobs:
       - run:
           name: Run Detect
           command: |
-              #setting shared may help, but isn't necessary for me#bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.start=true --logging.level.com.blackducksoftware.integration=INFO --detect.docker.passthrough.shared.dir.path.local=$(pwd)/shared
               bash <(curl -s https://blackducksoftware.github.io/hub-detect/hub-detect.sh) --detect.docker.image=alpine:latest --detect.hub.signature.scanner.disabled=true --blackduck.hub.offline.mode=true --detect.docker.passthrough.imageinspector.service.start=true --logging.level.com.blackducksoftware.integration=DEBUG
